@@ -45,5 +45,5 @@ scatter_plot_chart <- ggplot(aggregate_info2) +
     y = "Total Movies",
     color = "Streaming Platforms"
   )
-
+scatter_plot_chart
 # The purpose of adding this scatter plot is to compare the release years of movies on different streaming platforms and reveal differences in user preferences for the latest or classic movies. The chart shows that the movie libraries of Prime Video and Netflix mainly focus on recent movies, with fewer containing classic movies from nearly 2000 years. In contrast, Disney+ and Hulu's movie library specifically includes movies from 10 years ago, and they have more classic movies than the other two platforms. In this scatter plot, I use the release year of the latest and classic movies as the x-axis, different platforms as color codes, and the points in the scatter plot are located in different year positions. This allows users to visually see the differences in time dimensions of each platform, helping them choose the platform that suits their taste.
