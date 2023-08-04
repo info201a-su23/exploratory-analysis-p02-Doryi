@@ -4,6 +4,7 @@ library(tidyverse)
 library(dplyr)
 
 # Load the data set
+#setwd("C:/Users/Admin/OneDrive - UW/Info 201/code/exploratory-analysis-p02-Doryi")
 df <- read.csv("MoviesOnStreamingPlatforms.csv")
 
 # Create the table that contain the interested data

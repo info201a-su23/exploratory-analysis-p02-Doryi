@@ -3,79 +3,129 @@ title: "Exploratory Analysis"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+library(dplyr)
+```
+
 ## Project title
 
 Give your project a concise, interesting title that summarizes the entirety of your project
 
 ### Authors
-
-Names of your team members
+Nicholas Hong: nhong1@uw.edu
+Doryi Wang: mwang311@uw.edu
+Nikki Yuan: yuan0709@uw.edu
+Rebecca Wang: lufanw@uw.edu
 
 ### Date
 
-Winter 2022
+Summer 2023
 
 ### Abstract
 
-No more than three sentences that summarize your project. Focus on the very most important aspects. For example: (1) "Our main question is .... This question is important because .... To address the question, we will ...." (2) "We are concerned with ..., because .... To address this concern, we plan to ...." (3) "Consider that .... This is important because .... Accordingly, we plan to ...."
+This project analyzes content offerings from Netflix, Hulu, Disney and Prime Video based on unique titles, age ratings, movie reviews, and release years. By doing so, customers can choose which service is best for them and platforms can play to their competitive advantages. 
 
 ### Keywords
 
-3-5 keywords that summarize your project.
-(e.g., "Keywords: human physiology; bicycle exercise; Gen Z; times-series data")
+Streaming platforms, Content diversity, User satisfaction, Competitive advantage
 
-### Introduction  
+### Introduction
+With the rise of streaming platforms, the entertainment and media access has undergone tremendous changes. Streaming platforms have completely changed how we access and enjoy content, allowing us to quickly see many movies, TV programs, documentaries, etc. With the intensification of competition, various streaming platforms aim to differentiate themselves via unique offerings.
 
-Briefly introduce your project.  Include 3-5 research questions. What motivates the questions? Why are they important? (at least 200 words)
+This study aims to analyze exclusivity, movie reviews, age ratings and move release years from major streaming platforms (Netflix, Hulu, Disney, and Prime Video) to understand their relative advantages and disadvantages. We will be analyzing 5 major questions:
 
-### Related Work  
+1. **How does the content library of each streaming platform compare in terms of type diversity and original works?**
+This question aims to understand how each platform plans its content and scope to cater to different users’ interests by comparing the quantity of unique titles per streaming service. 
 
-Describe your topic and related work in this space. You must include 3 citations to related work (URLs to similar work, high quality articles from the popular press, research papers, etc. ) Please use a standard citation style of your choice. (at least 200 words)
+2. **How do the average movie ratings differ across the various platforms?**
+User experience and streaming quality are critical aspects of streaming platforms. By understanding the level of user satisfaction, it is possible to determine which platform might offer more favorable titles.
+
+3. **What age does each platform cater to based on their average age rating?**
+Streaming platforms typically differentiate themselves through unique titles targeted towards a specific demographic. This is important for users deciding which platform is most appropriate for their age group.
+
+4. **How do the movie release years compare across platforms?**
+While some users may prefer to watch the latest releases, others might want to watch classic titles from previous years as well.
+
+### Related Work
+
+The streaming platform has recently become an important component of popular entertainment, and people tend to use streaming media because of its convenience and wide range of content. Its commerciality and portability have gradually become a recent prevailing research topic. This project aims to analyze the difference in streaming platform information and its impact on user usage.
+
+“Data Analysis of Streaming Services & Movie Rating” holds a similar purpose and analyzes which platform had higher rated movies and compared the year of movies, and their goal is that “to determine which streaming service has a movie collection with the highest average IMDb rating and which years had the highest rated movies”(Loesberg). The result shows that until the article's publication date of April 19, 2021, Disney + has higher average IMDB rated movies while Amazon prime video streaming has a higher percentage of movies.
+
+In the research “Factors Affecting Online Streaming Subscriptions” the researchers have used the regression model to analyze the co-relationship between different factors and the user choice of the streaming platform, and the study indicates that the "social trend (negative), cost and customer service factors were statistically significant"(Lee 2).
+
+The article “Statistical Study of View Preferences for Online Videos With Cross-Platform Information” has a similar reaching topic about the streaming platform, and its analysis of the dataset from Douban which "includes feedbacks (e.g., movie ratings, comments, and reviews) from all users of different online video systems, and movie metadata (e.g., release date, actors, and directors)" (Zhou 1512). The author has statistically analyzed the data and concluded that there is a co-relationship between those factors and the view counts, and indicates that those studies could positively benefit the streaming platform that provides those videos.  
+
 
 ### The Dataset
+We found the data from Kaggle [here.](https://www.kaggle.com/datasets/ruchi798/movies-on-netflix-prime-video-hulu-and-disney) The data was collected by Ruchi Bhaia who is a product marketing manager and data scientist at HP Pittsburgh. It was generated by directly scraping the information off of the different streaming platforms. The data was collected to show on which platform people can find their chosen movies. It is also collected to explore the relationship between movies of different age groups and platforms that include these movies. The data includes 9515 observations and 11 attributes. 
 
-Where did you find the data? Please include a link to the data source  
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+The question of power relates to attributes of the dataset. First, the target age for a particular movie observation involves attitudes and power. The power source is hidden since we do not know who determines the target age for a particular movie. However, it does imply the power to make different age groups see the "right" movie. Second, the data uses Rotten Tomatoes as a platform that gives marks to different movies. It implicitly treats Rotton Tomatoes as a source of power.
+
+The limitations of the data set are as follows:
+
+1. There are a lot of character type variables such as titles of movies, target age groups, and marks given by Rotten Tomatoes. It makes this dataset not very suitable for quantitative analysis. We need to apply some transformation and aggregation of data before analysis. For example, we can convert the string "94/100" into numeric 94 in the Rotten Tomatoes attribute.
+
+2. There are four dummy variables indicating the platform of a particular movie. It is okay if we focus on the analysis of specific movies, but it will require reshaping data if we need to look at the overall characteristics of each platform.
+
+3. The data set includes too few characteristics of platforms. It does not show the price range of streaming services. It does not have the user experience of different platforms. Moreover, I think the data set lacks categories of movies such as comedy, thriller, and so on. The categories of movies allow us to analyze which category of movies are popular on each platform. If we do not know the most popular movie category in each platform, we cannot compare strengths and weaknesses in terms of content between different platforms.
+
 
 ### Implications
 
-Assuming you answer your research questions, briefly describe the expected or possible implications for technologists, designers, and policymakers. (at least 150 words)
+Analyzing the differentiating factors among Hulu, Netflix, Disney and Amazon Prime Video would help these companies find out their market advantages and disadvantages and allow them to use these factors for their benefit. While maximizing diversity is important, it’s even more critical to offer movie titles that are attractive to their users. For example, one streaming platform might have the most exclusive titles. However, if all of these titles have poor user ratings, viewers will be quite dissatisfied and might change to a competing platform. Another instance would be if a platform has historically catered towards the youth, expanding to more mature titles might not be what the audience is looking for. 
 
-### Limitations & Challenges
-What challenges or limitations might you need to address with your project idea more broadly? Briefly discuss. (at least 150 words)
+Users will also benefit from this research. Being that all of these platforms are paid services, customers will want to ensure that their money is being spent to their best benefit. Depending on the specific customer, they might prioritize age ratings, reviews, exclusivity or release years. Through this data analysis, they can choose which platform is best suited for them. 
+
+### Challenges and Limitations
+
+A possible challenge could be a lack of significant differentiation across the platforms. Disney, Hulu, Amazon Prime Video and Netflix are all highly established names in the industry and have been growing their catalogs for years. All motivated with gaining a competitive advantage, their collections could be relatively similar by all offering a vast range of attractive titles. From a personal observation, it’s clear that there isn’t a clear dominating streaming service culturally.
+
+Another limitation would be the inability to consider other streaming platforms that could be equally competitive, such as YouTube Plus or HBO Max. This could have an effect on the implications previously mentioned as it will be difficult for users of the data to gain a full perspective of the various offerings in the market. For example, finding that one of the platforms from our analysis has the newest movies doesn’t necessarily mean that this platform has the newest movies within the entire market. 
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+```{r summary, echo=FALSE, message=FALSE}
+source("summary.R")
+```
+
+From the summary, we found that the average release year across all platforms was ```r avg_yr_overall```. Netflix had the highest average year at ```r max_avg_yr```, while Disney had the lowest average year at ```r lowest_avg_yr```. 
+
+In addition, the average Rotten Tomatoes was ```r avg_review_overall``` from all platforms. All 4 of the platforms had relatively similar average reviews. Hulu was the highest at ```r max_avg_review``` and Prime was the lowest at ```r lowest_avg_review```. 
 
 ### Table
 
-Include a table of aggregate information
+```{r aggregated table, echo=FALSE, message=FALSE}
+source("table.R")
+kable(aggregate_Age_rating, format = "html", table.attr = "style='border-collapse: separate; border-spacing: 10px;'")
+```
 
-Describe why you included the table and what information it reveals
+This table was used to show how the breakdown of age ratings per platform and provide information on the age demographic that each platform caters to. Clearly, Disney cares most about its younger audience with only 3 movies that were 18+. The large majority of its movies were for people 13 and under.
+
+Meanwhile, Prime offers over 1000 movies that are 18+. This difference very substantial when compared to Disney, showing a clear target towards an older audience. At the same time, Prime still maintains a substantial offering for younger ages as well. 
 
 ### Chart 1
 
-Include a chart
 
-Describe why you chose this chart and what information it reveals
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+``````{r, echo = FALSE, code = readLines("Scatterplot.R")}
 ```
+
+This scatterplot was chosen to show how the movie release years vary across the platforms in terms of classics and modern titles. The distinction was made that classic movies were made in the year 2000 or before, while modern movies were made in 2010 or later. 
+
+The chart shows that Prime Video offers the most classic titles, while Netflix leads in the competition in modern movies. Although Netflix exceeds in the newer releases, they certainly lack in their older offerings. Overall, Prime offers the best compromise between a wide selection of both classic and modern movies. 
 
 ### Chart 2
 
-Include a chart
+``````{r, echo = FALSE, code = readLines("Bar_chart.R")}
+```
 
-Describe why you chose this chart and what information it reveals
+
+The bar chart was used to display how the total number of movies differs across the platforms. Disney+ and Hulu are roughly tied at around 1,000 titles. Meanwhile, Netflix and Prime Video are a close match at around 4,000 titles. It's surprising to see how much disparity exists between these two groups and it reveals that Netflix and Prime Video absolutely lead the competition in total movie offerings. 
 
 ### Chart 3
 
