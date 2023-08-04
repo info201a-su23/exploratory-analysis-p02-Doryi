@@ -33,5 +33,5 @@ bar_chart <- ggplot(aggregate_info) +
        x = "Streaming Platforms",
        y = "Total Movies",
        fill = "Streaming Platforms")
-
+bar_chart
 # The purpose of adding this bar chart is to display the number of movies released by various streaming platforms from 1914 to 2021 to thoroughly compare the movie production diversity differences between them. This bar chart reveals significant differences in the number of movies across streaming platforms. Prime Video has the highest number of films released, reaching over 4000, while Disney+ and Hulu have relatively few, only around 1000. This reflects the differences in content supply among different platforms and may also reflect their positioning and audience groups. In this bar chart, I use different colors to fill the columns of each platform, making the data more transparent and easier to compare the differences. Through this visualization approach, users can better understand the number of movies on various streaming platforms and their differences in movie production. 
