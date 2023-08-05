@@ -40,6 +40,9 @@ ages_rating_data_long <- gather(
   -Age
 )
 
+ages_rating_data_long$Age[ages_rating_data_long$Age == ""] <- "Undefined"
+ages_rating_data_long <- ages_rating_data_long[ages_rating_data_long$Age != "all", ]
+
 aggregate_Age_rating <- ages_rating_data_long %>%
   filter(has_movie == 1) %>%
   group_by(Platform, Age) %>%
