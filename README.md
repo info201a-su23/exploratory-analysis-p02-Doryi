@@ -1,7 +1,6 @@
 # Exploratory Analysis
 
-Link to your group's exploratory analysis here: https://info-201b-sp23.github.io/exploratory-analysis-starter/index.html   
-(Update this link when you have your actual report- the above link is simply a template)
+Link to your group's exploratory analysis here: https://info201a-su23.github.io/exploratory-analysis-p02-Doryi/ 
 
 The purpose of this assignment is to provide you with the opportunity to explore your final project data and become familiar with collaborative coding techniques. By completing the assignment, you will demonstrate the following skills:
 
@@ -17,17 +16,17 @@ For this assignment, your team will create an RMarkdown report about the dataset
 
 Your report must include all of the elements from your Final Project Proposal, but the elements should be clarified, improved, and updated from your original submission based on conversations with your group and feedback from the teaching team. 
 
-In addition, your report must include: 
+In addition, your report must include:B 
 
-  - A paragraph of summary information, citing at least 5 values calculated from the data  
-  - A table of  aggregated data (e.g., that has been "grouped" by one of your features)  
+  - A paragraph of summary information, citingB at least 5B values calculated from the data  
+  - A table ofB  aggregated data (e.g., that has been "grouped" by one of your features)  
   - 3 charts that display information from the data (what you visualize is up to you)  
 
 ## File organization
 
 You will keep your code organized in multiple different files. This will help keep your project more modular and clear. You will create six different files for this project:
 
-  - An index.Rmd file that renders your report  
+  - AnB index.RmdB file that renders your report  
   - An .R file that calculates summary information to be included in your report  
   - An .R file that creates a table of summary information to be included in your report  
   - An .R file that creates your first chart  
