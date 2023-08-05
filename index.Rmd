@@ -11,9 +11,7 @@ library(tidyverse)
 library(dplyr)
 ```
 
-## Project title
-
-Give your project a concise, interesting title that summarizes the entirety of your project
+## Analysis of Hulu, Disney, Prime and Netflix
 
 ### Authors
 Nicholas Hong: nhong1@uw.edu
@@ -94,9 +92,9 @@ Another limitation would be the inability to consider other streaming platforms 
 source("summary.R")
 ```
 
-From the summary, we found that the average release year across all platforms was ```r avg_yr_overall```. Netflix had the highest average year at ```r max_avg_yr```, while Disney had the lowest average year at ```r lowest_avg_yr```. 
+The dataset includes a compilation of ```r summary_info$total``` movies from Hulu, Disney, Prime and Netflix. We found that the average release year across all platforms was ```r summary_info$avg_yr_overall```. Netflix had the highest average year at ```r summary_info$max_avg_yr```, while Disney had the lowest average year at ```r summary_info$lowest_avg_yr```. 
 
-In addition, the average Rotten Tomatoes was ```r avg_review_overall``` from all platforms. All 4 of the platforms had relatively similar average reviews. Hulu was the highest at ```r max_avg_review``` and Prime was the lowest at ```r lowest_avg_review```. 
+In addition, the average Rotten Tomatoes was ```r summary_info$avg_review_overall``` from all platforms. All 4 of the platforms had relatively similar average reviews. Hulu was the highest at ```r summary_info$max_avg_review``` and Prime was the lowest at ```r summary_info$lowest_avg_review```. 
 
 ### Table
 
@@ -112,7 +110,7 @@ Meanwhile, Prime offers over 1000 movies that are 18+. This difference very subs
 ### Chart 1
 
 
-``````{r, echo = FALSE, code = readLines("Scatterplot.R")}
+```{r, echo = FALSE, code = readLines("Scatterplot.R")}
 ```
 
 This scatterplot was chosen to show how the movie release years vary across the platforms in terms of classics and modern titles. The distinction was made that classic movies were made in the year 2000 or before, while modern movies were made in 2010 or later. 
@@ -121,14 +119,16 @@ The chart shows that Prime Video offers the most classic titles, while Netflix l
 
 ### Chart 2
 
-``````{r, echo = FALSE, code = readLines("Bar_chart.R")}
+```{r, echo = FALSE, code = readLines("Bar_chart.R")}
 ```
 
 
-The bar chart was used to display how the total number of movies differs across the platforms. Disney+ and Hulu are roughly tied at around 1,000 titles. Meanwhile, Netflix and Prime Video are a close match at around 4,000 titles. It's surprising to see how much disparity exists between these two groups and it reveals that Netflix and Prime Video absolutely lead the competition in total movie offerings. 
+The purpose of adding this bar chart is to display the number of movies released by various streaming platforms from 1914 to 2021 to thoroughly compare the movie production diversity differences between them. This bar chart reveals significant differences in the number of movies across streaming platforms. Prime Video has the highest number of films released, reaching over 4000, while Disney+ and Hulu have relatively few, only around 1000. This reflects the differences in content supply among different platforms and may also reflect their positioning and audience groups. In this bar chart, I use different colors to fill the columns of each platform, making the data more transparent and easier to compare the differences. Through this visualization approach, users can better understand the number of movies on various streaming platforms and their differences in movie production. 
+
 
 ### Chart 3
 
-Include a chart
+```{r, echo = FALSE, code = readLines("Boxplot.R")}
+```
 
-Describe why you chose this chart and what information it reveals
+This chart was included to show how the distribution of Rotten Tomatoes ratings varies across the platforms. In this case, all 4 platforms roughly have a similar distribution. However, Disney and Hulu lead the competition with relatively the least poorly rated movies. Meanwhile, Netflix offers a large range of good and bad movies. Unfortunately, Prime false short and has the lowest median and lacks excellent movies. 

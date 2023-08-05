@@ -1,11 +1,13 @@
+#load libraries
 rm(list = ls())
 library(tidyverse)
 library(dplyr)
 library(readr)
 
+#read data
 data <- read.csv("MoviesOnStreamingPlatforms.csv")
   
-# Chart 1: Diversity of Streaming Platforms (Bar chart)
+# pull total movies from each platform
 total_netflix <- data %>%
   summarise(total_netflix = sum(Netflix, na.rm = TRUE)) %>%
   pull(total_netflix)
@@ -19,11 +21,13 @@ total_disney <- data %>%
   summarise(total_disney = sum(Disney., na.rm = TRUE)) %>%
   pull(total_disney)
 
+#aggregate data for total movies pwer platform
 aggregate_info <- data.frame(
   Streaming_Platforms = c("Netflix", "Hulu", "Prime Video", "Disney+"),
   Total_Movies = c(total_netflix, total_hulu, total_prime, total_disney)
 )
 
+#plot barchart
 bar_chart <- ggplot(aggregate_info) +
   geom_bar(stat = "identity") + aes(
     x = Streaming_Platforms,
